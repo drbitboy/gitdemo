@@ -6,5 +6,5 @@ Catherine Rerecich
 """
 
 if "__main__" == __name__:
-  for fammember in __doc__.strip().split('\n'):
-    print(fammember)
+  for family_member in __doc__.strip().split('\n'):
+    print(family_member)
