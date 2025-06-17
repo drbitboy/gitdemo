@@ -243,6 +243,7 @@ Date:   Sun Jun 15 08:27:55 2025 -0400
 * cbfb227 1980s additions
 * 03c0622 1956 additions
 * f27ab44 (master) initial.commit
+```
 
 
 ## Create, add, and commit readme to the **next_gen** branch
