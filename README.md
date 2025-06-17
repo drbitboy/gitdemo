@@ -284,7 +284,7 @@ index e8bce82..a98ea25 100644
 
 ## Show **--oneline --graph** log of the current state
 * Note that there are ***two*** commit sequences starting from **f27ab44 initial.commit**
-  * One left (vertical) sequence leads to commit **24b6d15 branch next_gen**
+  * The left (vertical) sequence leads to commit **24b6d15 branch next_gen**
   * The right sequence leads to commit **bf19ace branch master**
 ```
 % git log --all --decorate --color --oneline --graph
