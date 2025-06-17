@@ -177,7 +177,7 @@ Date:   Sun Jun 15 08:27:55 2025 -0400
 
 
 
-## Edit script to add Millenials, run script
+## Edit script to add Kids, run script
 ```
 % vi family_.py
 
@@ -243,64 +243,9 @@ Date:   Sun Jun 15 08:27:55 2025 -0400
 * cbfb227 1980s additions
 * 03c0622 1956 additions
 * f27ab44 (master) initial.commit
-```
 
 
-
-
-## Switch to *old* **master** branch (initial commit with Greatest Generation only)
-```
-% git checkout master
-Switched to branch 'master'
-```
-
-## Merge newest **next_gen** branch into **master**
-* Option **--no-ff** - see Note 1 below
-* Will make the **master** branch the same as **next_gen**
-```
-% git merge --no-ff next_gen
-Merge made by the 'recursive' strategy.
- family_.py | 11 +++++++++++
- 1 file changed, 11 insertions(+)
-```
-
-## Show merged branch logs
-```
-% git log
-commit 841e5e73b99103f0dea99f8a2928074cdf562140 (HEAD -> master)
-Merge: f27ab44 73ebd47
-Author: Brian Carcich <briantcarcich@gmail.com>
-Date:   Sun Jun 15 08:32:13 2025 -0400
-
-    Merge branch 'next_gen'
-
-commit 73ebd470a4108c0e0b37a2db3b65a4cf1cb5da95 (next_gen)
-Author: Brian Carcich <briantcarcich@gmail.com>
-Date:   Sun Jun 15 08:31:51 2025 -0400
-
-    great grandchildren
-
-commit cbfb227431a4523dc4d40447315241aec926329b
-Author: Brian Carcich <briantcarcich@gmail.com>
-Date:   Sun Jun 15 08:30:41 2025 -0400
-
-    1980s additions
-
-commit 03c06228c8cd280ebb94cc49df6e8de1faea1122
-Author: Brian Carcich <briantcarcich@gmail.com>
-Date:   Sun Jun 15 08:29:06 2025 -0400
-
-    1956 additions
-
-commit f27ab44dbcfd06a3f08a1f27611e08baf0e85a12
-Author: Brian Carcich <briantcarcich@gmail.com>
-Date:   Sun Jun 15 08:27:55 2025 -0400
-
-    initial.commit
-```
-
-
-## Create, add, and commit readme to the **master** branch
+## Create, add, and commit readme to the **next_gen** branch
 ```
 % vi README.md
 
@@ -308,6 +253,7 @@ Date:   Sun Jun 15 08:27:55 2025 -0400
 
 % git commit -m add.readme
 ```
+
 
 ## A different person makes a small edit to the **master** branch
 * Note that the **master** branch initially is still the f27ab44 **initial.commit**
@@ -349,6 +295,38 @@ index e8bce82..a98ea25 100644
 ```
 
 
+## Checkout master branch, then merge next_gen branch into it
+```
+% git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+
+% git merge next_gen
+Auto-merging family_.py
+Merge made by the 'recursive' strategy.
+ README.md  | 384 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ family_.py |  11 +++
+ 2 files changed, 395 insertions(+)
+ create mode 100644 README.md
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -369,16 +347,13 @@ index e8bce82..a98ea25 100644
 * Graph display illustrates how branches have been merged
 ```
 % git log --all --decorate --color --oneline --graph
-*   841e5e7 (HEAD -> master) Merge branch 'next_gen'
+*   96c62fb (HEAD -> master) Merge branch 'next_gen' into master
 |\
-| * 73ebd47 (next_gen) great grandchildren
+| * a15b3d4 (origin/next_gen, next_gen) add.readme
+| * 73ebd47 great grandchildren
 | * cbfb227 1980s additions
 | * 03c0622 1956 additions
+* | bf19ace (origin/master) rename.variable
 |/
 * f27ab44 initial.commit
 ```
-
-### Note 1
-* Option **--no-ff** means "No Fast-Forward
-  * In this case, it prevents **master** from simply being assigned to the same commit as **next_gen**
-    * Otherwise, that **--oneline --graph** log would be a single column of paths, and merge would be hidden
